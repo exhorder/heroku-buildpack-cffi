@@ -14,6 +14,6 @@ echo `ls $BUILD_DIR/.apt/usr/lib`
 echo `ls $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu`
 echo `ls $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig`
 
-mkdir -p $BUILD_DIR/.heroku/vendor/lib/x86_64-linux-gnu/pkg-config
-cp $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libffi* $BUILD_DIR/.heroku/vendor/lib/x86_64-linux-gnu
-sed -e "s%/usr%/app/.apt/usr%" -e "s%Cflags:%Cflags: -I\${includedir}/x86_64-linux-gnu%" -e "s%Libs:%Libs: -L\${libdir}%" < $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig/libffi.pc > $BUILD_DIR/.heroku/vendor/lib/x86_64-linux-gnu/pkg-config/libffi.pc
+mkdir -p $BUILD_DIR/.heroku/vendor/lib/pkg-config
+cp $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libffi* $BUILD_DIR/.heroku/vendor/lib
+sed -e "s%/usr%/app/.apt/usr%" -e "s%Cflags:%Cflags: -I\${includedir}/x86_64-linux-gnu%" -e "s%Libs:%Libs: -L\${libdir}%" < $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig/libffi.pc > $BUILD_DIR/.heroku/vendor/lib/pkg-config/libffi.pc
