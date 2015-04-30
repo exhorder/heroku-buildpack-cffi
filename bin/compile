@@ -7,6 +7,7 @@ set -e
 BUILD_DIR=$1
 
 echo '-----> Rewriting libffi.pc'
+echo "$PKG_CONFIG_PATH"
 echo `ls $BUILD_DIR`
 echo `ls $BUILD_DIR/.apt`
 echo `ls $BUILD_DIR/.apt/usr`
