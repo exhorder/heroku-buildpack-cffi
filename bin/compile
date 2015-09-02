@@ -15,6 +15,6 @@ else
   echo "-----> Bootstrapping libffi."
   mkdir -p .heroku/vendor
   curl $VENDORED_LIBFFI -s | tar zxv -C .heroku/vendor &> /dev/null
-  cp .heroku/vendor/pkgconfig/* .heroku/vendor/pkg-config
+  cp .heroku/vendor/lib/pkgconfig/* .heroku/vendor/lib/pkg-config
   export LIBFFI=$(pwd)/vendor
 fi
