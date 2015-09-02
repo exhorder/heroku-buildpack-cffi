@@ -7,7 +7,14 @@ set -e
 BUILD_DIR=$1
 
 echo '-----> Rewriting libffi.pc'
-mkdir -p $BUILD_DIR/.heroku/vendor/lib/pkg-config
-sed -e "s%/usr%/app/.apt/usr%" -e "s%Cflags:%Cflags: -I\${includedir}/x86_64-linux-gnu%" -e "s%Libs:%Libs: -L\${libdir}%" < $BUILD_DIR/.apt/usr/lib/pkgconfig/libffi.pc > $BUILD_DIR/.heroku/vendor/lib/pkg-config/libffi.pc
-mkdir -p $BUILD_DIR/.heroku/vendor/lib
-cp $BUILD_DIR/.apt/usr/lib/libffi* $BUILD_DIR/.heroku/vendor/lib
+echo "$PKG_CONFIG_PATH"
+echo `ls $BUILD_DIR`
+echo `ls $BUILD_DIR/.apt`
+echo `ls $BUILD_DIR/.apt/usr`
+echo `ls $BUILD_DIR/.apt/usr/lib`
+echo `ls $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu`
+echo `ls $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig`
+
+mkdir -p $BUILD_DIR/.heroku/vendor/lib/pkgconfig
+cp $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libffi* $BUILD_DIR/.heroku/vendor/lib
+sed -e "s%/usr%/app/.apt/usr%" -e "s%Cflags:%Cflags: -I\${includedir}%" -e "s%Libs:%Libs: -L\${libdir}%" < $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig/libffi.pc > $BUILD_DIR/.heroku/vendor/lib/pkgconfig/libffi.pc
