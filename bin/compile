@@ -11,5 +11,5 @@ echo "$PKG_CONFIG_PATH"
 echo `ls -alh $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu`
 
 mkdir -p $BUILD_DIR/.heroku/vendor/lib/pkgconfig
-cp --preserve=links $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libffi* $BUILD_DIR/.heroku/vendor/lib
+cp -av $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libffi* $BUILD_DIR/.heroku/vendor/lib
 sed -e "s%/usr%/app/.apt/usr%" -e "s%Cflags:%Cflags: -I\${includedir}%" -e "s%Libs:%Libs: -L\${libdir}%" < $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig/libffi.pc > $BUILD_DIR/.heroku/vendor/lib/pkgconfig/libffi.pc
