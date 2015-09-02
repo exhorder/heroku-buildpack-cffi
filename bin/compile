@@ -4,6 +4,8 @@
 # fail fast
 set -e
 
+[ ! "$STACK" ] && STACK="cedar"
+
 VENDORED_LIBFFI="https://lang-python.s3.amazonaws.com/$STACK/libraries/vendor/libffi.tar.gz"
 PKG_CONFIG_PATH="/app/.heroku/vendor/lib/pkgconfig:$PKG_CONFIG_PATH"
 
