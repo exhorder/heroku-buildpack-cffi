@@ -7,7 +7,7 @@ set -e
 [ ! "$STACK" ] && STACK="cedar"
 
 VENDORED_LIBFFI="https://lang-python.s3.amazonaws.com/$STACK/libraries/vendor/libffi.tar.gz"
-PKG_CONFIG_PATH="/app/.heroku/vendor/lib/pkgconfig:$PKG_CONFIG_PATH"
+#PKG_CONFIG_PATH="/app/.heroku/vendor/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 if [ -d ".heroku/vendor/lib/libffi-3.1.1" ]; then
   export LIBFFI=$(pwd)/vendor
@@ -15,5 +15,6 @@ else
   echo "-----> Bootstrapping libffi."
   mkdir -p .heroku/vendor
   curl $VENDORED_LIBFFI -s | tar zxv -C .heroku/vendor &> /dev/null
+  cp .heroku/vendor/pkgconfig/* .heroku/vendor/pkg-config
   export LIBFFI=$(pwd)/vendor
 fi
