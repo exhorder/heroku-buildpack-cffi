@@ -8,12 +8,7 @@ BUILD_DIR=$1
 
 echo '-----> Rewriting libffi.pc'
 echo "$PKG_CONFIG_PATH"
-echo `ls $BUILD_DIR`
-echo `ls $BUILD_DIR/.apt`
-echo `ls $BUILD_DIR/.apt/usr`
-echo `ls $BUILD_DIR/.apt/usr/lib`
-echo `ls $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu`
-echo `ls $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/pkgconfig`
+echo `ls -alh $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu`
 
 mkdir -p $BUILD_DIR/.heroku/vendor/lib/pkgconfig
 cp $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libffi* $BUILD_DIR/.heroku/vendor/lib
